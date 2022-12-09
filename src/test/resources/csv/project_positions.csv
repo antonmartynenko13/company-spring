@@ -1,0 +1,10 @@
+id,userId,projectId,positionStartDate,positionEndDate,positionTitle,occupation
+1,1,1,2022-10-25,2022-11-15,Position title 1,Occupation 1
+2,2,2,2022-11-05,2022-12-20,Position title 2,Occupation 2
+3,3,3,2022-11-21,2023-02-21,Position title 3,Occupation 3
+4,4,1,2022-10-25,2022-11-15,Position title 4,Occupation 4
+5,5,2,2022-11-05,2022-12-20,Position title 5,Occupation 5
+6,6,3,2022-11-21,2023-02-21,Position title 6,Occupation 6
+7,7,1,2022-10-25,2022-11-15,Position title 7,Occupation 7
+8,8,2,2022-11-05,2022-12-20,Position title 8,Occupation 8
+9,9,3,2022-11-21,2023-02-21,Position title 9,Occupation 9
