@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    username: sa
+    url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
+    password: 'sa'
+    spring:
+      jpa:
+  test:
+    database:
+      replace: none
+  logging:
+    level:
+      org:
+        hibernate:
+          SQL: debug
+  liquibase:
+    change-log: classpath:db/liquibase/changelog-master.xml
+  sql:
+    init:
+      mode: always
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    hibernate:
+      ddl-auto: none
