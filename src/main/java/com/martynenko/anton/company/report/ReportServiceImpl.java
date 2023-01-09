@@ -26,7 +26,6 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-@Primary
 public class ReportServiceImpl implements ReportService {
 
   private ReportRepository repository;

@@ -13,13 +13,11 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-@Primary
 public class ProjectPositionServiceImpl implements ProjectPositionService {
   private ProjectPositionRepository projectPositionRepository;
   private UserService userService;
   private ProjectService projectService;
 
-  @Autowired
   public ProjectPositionServiceImpl(final ProjectPositionRepository projectPositionRepository,
       final UserService userService, final ProjectService projectService) {
     this.projectPositionRepository = projectPositionRepository;

@@ -20,7 +20,6 @@ public class ReportController {
 
   private ReportService reportService;
 
-  @Autowired
   public ReportController(final ReportService reportService) {
     this.reportService = reportService;
   }

@@ -32,7 +32,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProjectController {
   private final ProjectService projectService;
 
-  @Autowired
   public ProjectController(final ProjectService projectService) {
     this.projectService = projectService;
   }

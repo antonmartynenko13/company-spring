@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-@Primary
 public class DepartmentServiceImpl implements DepartmentService {
 
   private final DepartmentRepository departmentRepository;

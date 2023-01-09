@@ -42,7 +42,6 @@ public class UserController {
 
   private final CsvHelper<UserDTO> csvHelper;
 
-  @Autowired
   public UserController(final UserService userService, final CsvHelper<UserDTO> csvHelper) {
     this.userService = userService;
     this.csvHelper = csvHelper;

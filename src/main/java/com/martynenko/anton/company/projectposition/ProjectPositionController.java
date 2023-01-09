@@ -32,7 +32,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProjectPositionController {
   private final ProjectPositionService projectPositionService;
   
-  @Autowired
   public ProjectPositionController(final ProjectPositionService projectPositionService) {
     this.projectPositionService = projectPositionService;
   }

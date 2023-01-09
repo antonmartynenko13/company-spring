@@ -33,7 +33,6 @@ public class DepartmentController {
 
   private DepartmentService departmentService;
 
-  @Autowired
   public DepartmentController(final DepartmentService departmentService) {
     this.departmentService = departmentService;
   }

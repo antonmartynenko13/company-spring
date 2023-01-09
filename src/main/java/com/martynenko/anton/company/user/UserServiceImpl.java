@@ -22,7 +22,6 @@ import org.springframework.validation.annotation.Validated;
 @Slf4j
 @Validated
 @Service
-@Primary
 public class UserServiceImpl implements UserService {
 
   private final UserRepository userRepository;
