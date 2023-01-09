@@ -7,8 +7,6 @@ import com.martynenko.anton.company.user.UserService;
 import java.util.Collection;
 import javax.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 @Slf4j

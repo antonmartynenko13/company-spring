@@ -1,13 +1,11 @@
 package com.martynenko.anton.company.report;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.martynenko.anton.company.csv.CsvHelper;
 import com.martynenko.anton.company.department.Department;
 import com.martynenko.anton.company.department.DepartmentDTO;

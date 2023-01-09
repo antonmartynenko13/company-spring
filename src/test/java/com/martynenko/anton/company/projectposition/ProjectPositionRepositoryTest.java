@@ -1,7 +1,6 @@
 package com.martynenko.anton.company.projectposition;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import com.martynenko.anton.company.department.Department;
 import com.martynenko.anton.company.department.DepartmentDTO;

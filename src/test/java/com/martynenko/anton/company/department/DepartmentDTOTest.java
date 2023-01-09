@@ -2,7 +2,6 @@ package com.martynenko.anton.company.department;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;

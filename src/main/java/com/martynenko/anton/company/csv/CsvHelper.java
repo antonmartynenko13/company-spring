@@ -12,7 +12,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.multipart.MultipartFile;
 
 @Slf4j

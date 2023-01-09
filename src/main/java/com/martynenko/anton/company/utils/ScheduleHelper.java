@@ -7,13 +7,10 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
-import java.util.SortedMap;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -33,7 +30,7 @@ public class ScheduleHelper {
 
   private List<DateInterval> merge(List<DateInterval> intervals) {
 
-    if(intervals.size() <= 1)
+    if (intervals.size() <= 1)
       return intervals;
 
     Collections.sort(intervals, Comparator.comparing(DateInterval::getStart));
@@ -74,7 +71,7 @@ public class ScheduleHelper {
     LocalDate windowStart = target.getStart();
     LocalDate windowEnd = target.getEnd();
 
-    for (DateInterval interval: projectPositionIntervals) {
+    for (DateInterval interval : projectPositionIntervals) {
       //if interval include full target interval there no free windows
       if (interval.includes(target)) return Collections.EMPTY_LIST;
 

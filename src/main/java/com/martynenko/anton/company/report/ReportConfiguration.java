@@ -8,7 +8,6 @@ public class ReportConfiguration {
   @Bean
   XlsxReportGenerator reportGenerator() {
     //default building
-    //return new XlsxReportGenerator.ReportGeneratorBuilder().build();
     return XlsxReportGenerator.builder().build();
   }
 

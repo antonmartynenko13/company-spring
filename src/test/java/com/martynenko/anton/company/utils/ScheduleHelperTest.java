@@ -6,7 +6,6 @@ import static org.mockito.Mockito.when;
 
 import com.martynenko.anton.company.projectposition.ProjectPosition;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;

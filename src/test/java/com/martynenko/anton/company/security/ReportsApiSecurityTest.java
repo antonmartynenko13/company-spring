@@ -19,7 +19,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ReportsApiSecurityTest {
+class ReportsApiSecurityTest {
 
   String contextPath = "/api/reports/";
 

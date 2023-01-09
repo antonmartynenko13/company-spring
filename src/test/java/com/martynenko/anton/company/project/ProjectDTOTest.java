@@ -1,10 +1,8 @@
 package com.martynenko.anton.company.project;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
-import com.martynenko.anton.company.department.DepartmentDTO;
 import java.time.LocalDate;
 import java.util.Set;
 import java.util.stream.Collectors;

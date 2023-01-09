@@ -5,7 +5,6 @@ import static com.martynenko.anton.company.utils.Constants.XLSX_CONTENT_TYPE;
 import com.martynenko.anton.company.openapi.GetLastReport;
 import com.martynenko.anton.company.report.Report.ReportType;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

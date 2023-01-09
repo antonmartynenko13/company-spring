@@ -1,7 +1,6 @@
 package com.martynenko.anton.company.user;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import com.martynenko.anton.company.department.Department;
 import com.martynenko.anton.company.department.DepartmentDTO;
@@ -9,15 +8,12 @@ import com.martynenko.anton.company.department.DepartmentRepository;
 import com.martynenko.anton.company.project.Project;
 import com.martynenko.anton.company.project.ProjectDTO;
 import com.martynenko.anton.company.project.ProjectRepository;
-import com.martynenko.anton.company.projectposition.ProjectPosition;
 import com.martynenko.anton.company.projectposition.ProjectPositionDTO;
 import com.martynenko.anton.company.projectposition.ProjectPositionRepository;
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.context.jdbc.Sql;
-import org.springframework.transaction.annotation.Transactional;
 
 @DataJpaTest
 class UserRepositoryTest {
