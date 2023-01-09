@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.martynenko.anton</groupId>
 	<artifactId>company</artifactId>
-	<version>1.0.0</version>
+	<version>1.1.0</version>
 	<name>company</name>
 	<description>Application to keep track of employees and their workload by department</description>
 	<properties>
