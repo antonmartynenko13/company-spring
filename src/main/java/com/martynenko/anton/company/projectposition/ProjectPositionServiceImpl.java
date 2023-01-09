@@ -14,13 +14,13 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 @Primary
-public class DbProjectPositionService implements ProjectPositionService {
-  private final ProjectPositionRepository projectPositionRepository;
-  private final UserService userService;
-  private final ProjectService projectService;
+public class ProjectPositionServiceImpl implements ProjectPositionService {
+  private ProjectPositionRepository projectPositionRepository;
+  private UserService userService;
+  private ProjectService projectService;
 
   @Autowired
-  public DbProjectPositionService(final ProjectPositionRepository projectPositionRepository,
+  public ProjectPositionServiceImpl(final ProjectPositionRepository projectPositionRepository,
       final UserService userService, final ProjectService projectService) {
     this.projectPositionRepository = projectPositionRepository;
     this.userService = userService;

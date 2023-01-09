@@ -31,7 +31,7 @@ class UserRepositoryTest {
   private ProjectRepository projectRepository;
 
   @Test
-  @Transactional
+  //@Transactional
   void findAllByProjectPositionStartDateNotLessThanDate() {
     LocalDate userIsBusyFrom = LocalDate.now().plusDays(2);
     LocalDate userIsBusyTo = LocalDate.now().plusDays(7);
@@ -70,13 +70,18 @@ class UserRepositoryTest {
         ).createInstance(user, project)
     );
 
-    // user is free right now
-    assertThat(userRepository.findAvailable(LocalDate.now(), LocalDate.now())).isNotEmpty();
+    assertThat(userRepository.findAllWithoutCurrentProjectPosition()).hasSize(1);
 
-    // user is busy but will be free during period
-    assertThat(userRepository.findAvailable(LocalDate.now().plusDays(3), LocalDate.now().plusDays(10))).isNotEmpty();
+    //user has no project
+    userRepository.save(new UserDTO(
+        null,
+        "First2",
+        "Last2",
+        "email2@domain.com",
+        "employee",
+        department.getId()
+    ).createInstance(department));
 
-    // user is busy and can't be free during period
-    assertThat(userRepository.findAvailable(LocalDate.now().plusDays(5), LocalDate.now().plusDays(6))).isEmpty();
+    assertThat(userRepository.findAllWithoutCurrentProjectPosition()).hasSize(2);
   }
 }

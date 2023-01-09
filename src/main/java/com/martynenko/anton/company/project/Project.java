@@ -37,11 +37,6 @@ public class Project {
   @NotNull
   private LocalDate startDate;
 
-  @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
-  @ToString.Exclude
-  @EqualsAndHashCode.Exclude
-  private Collection<ProjectPosition> projectPositions;
-
   private LocalDate endDate;
 
   public Project(final ProjectDTO projectDTO) {

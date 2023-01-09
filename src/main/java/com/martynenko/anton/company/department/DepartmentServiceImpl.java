@@ -4,19 +4,17 @@ package com.martynenko.anton.company.department;
 import java.util.Collection;
 import javax.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
 @Primary
-public class DbDepartmentService implements DepartmentService {
+public class DepartmentServiceImpl implements DepartmentService {
 
-  @Autowired
   private final DepartmentRepository departmentRepository;
 
-  public DbDepartmentService(final DepartmentRepository departmentRepository) {
+  public DepartmentServiceImpl(final DepartmentRepository departmentRepository) {
     this.departmentRepository = departmentRepository;
   }
 

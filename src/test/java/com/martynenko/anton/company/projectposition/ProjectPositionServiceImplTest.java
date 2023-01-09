@@ -5,26 +5,22 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import com.martynenko.anton.company.department.DbDepartmentService;
-import com.martynenko.anton.company.department.Department;
-import com.martynenko.anton.company.department.DepartmentDTO;
-import com.martynenko.anton.company.department.DepartmentRepository;
-import com.martynenko.anton.company.project.DbProjectService;
+import com.martynenko.anton.company.project.ProjectServiceImpl;
 import com.martynenko.anton.company.project.Project;
-import com.martynenko.anton.company.user.DbUserService;
+import com.martynenko.anton.company.user.UserServiceImpl;
 import com.martynenko.anton.company.user.User;
 import java.util.List;
 import java.util.Optional;
 import javax.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.Test;
 
-class DbProjectPositionServiceTest {
+class ProjectPositionServiceImplTest {
   private ProjectPositionRepository repository = mock(ProjectPositionRepository.class);
 
-  private DbUserService userService = mock(DbUserService.class);
-  private DbProjectService projectService = mock(DbProjectService.class);
-  private DbProjectPositionService service
-      = new DbProjectPositionService(repository, userService, projectService);
+  private UserServiceImpl userService = mock(UserServiceImpl.class);
+  private ProjectServiceImpl projectService = mock(ProjectServiceImpl.class);
+  private ProjectPositionServiceImpl service
+      = new ProjectPositionServiceImpl(repository, userService, projectService);
 
   private ProjectPositionDTO dto = mock(ProjectPositionDTO.class);
   private ProjectPosition entity = mock(ProjectPosition.class);

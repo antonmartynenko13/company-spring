@@ -1,10 +1,10 @@
 package com.martynenko.anton.company.project;
 
-import com.martynenko.anton.company.openapi.CrudCreate;
-import com.martynenko.anton.company.openapi.CrudDelete;
-import com.martynenko.anton.company.openapi.CrudGetAll;
-import com.martynenko.anton.company.openapi.CrudGetOne;
-import com.martynenko.anton.company.openapi.CrudUpdate;
+import com.martynenko.anton.company.openapi.Create;
+import com.martynenko.anton.company.openapi.Delete;
+import com.martynenko.anton.company.openapi.GetAll;
+import com.martynenko.anton.company.openapi.GetById;
+import com.martynenko.anton.company.openapi.Update;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.net.URI;
 import java.util.Collection;
@@ -37,29 +37,29 @@ public class ProjectController {
     this.projectService = projectService;
   }
 
-  @CrudCreate
-  @PostMapping("")
+  @Create
+  @PostMapping
   public ResponseEntity<ProjectDTO> create(@RequestBody @Valid ProjectDTO created,
       final HttpServletRequest request) {
     created =  projectService.create(created).toDTO();
     return ResponseEntity.created(URI.create(request.getRequestURI() + created.id())).build();
   }
 
-  @CrudUpdate
+  @Update
   @PutMapping("/{id}")
   public ResponseEntity<ProjectDTO> update(@PathVariable final Long id,
       @RequestBody @Valid final ProjectDTO updated) {
     return ResponseEntity.ok(projectService.update(id, updated).toDTO());
   }
 
-  @CrudGetOne
+  @GetById
   @GetMapping("/{id}")
-  public ResponseEntity<ProjectDTO> getOne(@PathVariable final Long id) {
+  public ResponseEntity<ProjectDTO> getById(@PathVariable final Long id) {
     return ResponseEntity.ok(projectService.get(id).toDTO());
   }
 
-  @CrudGetAll
-  @GetMapping("")
+  @GetAll
+  @GetMapping
   public ResponseEntity<Collection<ProjectDTO>> getAll() {
     List<ProjectDTO> projectDTOList = projectService.listAll()
         .stream().map(Project::toDTO).toList();
@@ -68,7 +68,7 @@ public class ProjectController {
   }
 
 
-  @CrudDelete
+  @Delete
   @DeleteMapping("/{id}")
   public ResponseEntity<?> delete(@PathVariable final Long id) {
     projectService.delete(id);

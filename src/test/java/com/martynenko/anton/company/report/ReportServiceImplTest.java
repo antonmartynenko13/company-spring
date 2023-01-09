@@ -11,6 +11,7 @@ import static org.mockito.Mockito.when;
 import com.martynenko.anton.company.department.Department;
 import com.martynenko.anton.company.project.Project;
 import com.martynenko.anton.company.projectposition.ProjectPosition;
+import com.martynenko.anton.company.projectposition.ProjectPositionRepository;
 import com.martynenko.anton.company.report.Report.ReportType;
 import com.martynenko.anton.company.user.User;
 import com.martynenko.anton.company.user.UserService;
@@ -21,7 +22,7 @@ import java.util.Optional;
 import javax.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.Test;
 
-class DbReportServiceTest {
+class ReportServiceImplTest {
 
   UserService userService = mock(UserService.class);
 
@@ -29,7 +30,9 @@ class DbReportServiceTest {
 
   ReportGenerator reportGenerator = mock(ReportGenerator.class);
 
-  DbReportService service = new DbReportService(reportRepository, userService, reportGenerator);
+  ProjectPositionRepository projectPositionRepository = mock(ProjectPositionRepository.class);
+
+  ReportServiceImpl service = new ReportServiceImpl(reportRepository, userService, reportGenerator, projectPositionRepository);
 
   @Test
   void whenNoUsers_ThenShouldRunSuccessfully() {
@@ -46,7 +49,7 @@ class DbReportServiceTest {
     when(user.getFirstName()).thenReturn("Firstname Lastname");
     when(user.getDepartment()).thenReturn(department);
     //user has no position
-    when(user.getProjectPosition()).thenReturn(null);
+   // when(user.getProjectPosition()).thenReturn(null);
 
     when(userService.listAll()).thenReturn(List.of(user));
 
@@ -55,7 +58,7 @@ class DbReportServiceTest {
     when(reportGenerator.generate(anyMap())).thenReturn(generatedReport);
 
     //user has no position
-    when(user.getProjectPosition()).thenReturn(null);
+   // when(user.getProjectPosition()).thenReturn(null);
 
     service.generateReports();
     assertTrue(true);
@@ -77,10 +80,10 @@ class DbReportServiceTest {
     ProjectPosition projectPosition = mock(ProjectPosition.class);
     when(projectPosition.getProject()).thenReturn(project);
 
-    when(user.getProjectPosition()).thenReturn(projectPosition);
+    //when(user.getProjectPosition()).thenReturn(projectPosition);
 
     when(userService.listAll()).thenReturn(List.of(user));
-    when(userService.listAvailable(days)).thenReturn(List.of(user));
+    //when(userService.listAvailable(days)).thenReturn(List.of(user));
 
     byte[] generatedReport = new byte[0];
 
@@ -103,7 +106,7 @@ class DbReportServiceTest {
     Report report = mock(Report.class);
 
     when(reportRepository
-        .findFirstByReportTypeOrderByCreationDateDesc(any(ReportType.class)))
+        .findFirstByReportTypeOrderByIdDesc(any(ReportType.class)))
         .thenReturn(Optional.of(report));
 
     Arrays.stream(ReportType.values()).forEach( reportType -> {
@@ -115,7 +118,7 @@ class DbReportServiceTest {
   void shouldThrowNoEntityException() {
 
     when(reportRepository
-        .findFirstByReportTypeOrderByCreationDateDesc(any(ReportType.class)))
+        .findFirstByReportTypeOrderByIdDesc(any(ReportType.class)))
         .thenReturn(Optional.ofNullable(null));
 
     Arrays.stream(ReportType.values()).forEach( reportType -> {

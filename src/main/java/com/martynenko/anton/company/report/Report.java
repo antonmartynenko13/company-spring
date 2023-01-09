@@ -1,6 +1,7 @@
 package com.martynenko.anton.company.report;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -21,7 +22,14 @@ import org.hibernate.annotations.Type;
 @Entity
 public class Report {
   public enum ReportType {
-    WORKLOAD, AVAILABILITY
+    WORKLOAD("Employee", "Department", "Project", "Occupation"),
+    AVAILABILITY("Employee", "Department", "Project", "Project position end date");
+
+    String[] headers;
+
+    ReportType(String... headers) {
+      this.headers = headers;
+    }
   }
 
   @Id

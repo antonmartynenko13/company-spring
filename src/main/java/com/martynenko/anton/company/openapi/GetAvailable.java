@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 
-@CrudGetAll
+@GetAll
 @Operation(summary = "Get available",
     description = "Retrive list of available employees for assigning onto the new project. "
         + "Employee is available if he/she doesn’t have active projects. "

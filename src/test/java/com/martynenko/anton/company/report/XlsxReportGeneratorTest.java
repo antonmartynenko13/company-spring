@@ -18,7 +18,7 @@ class XlsxReportGeneratorTest {
 
   @Test
   void shouldReturnValidBinaryDataWithDefaultOptions() {
-    XlsxReportGenerator xlsxReportGenerator = new XlsxReportGenerator.ReportGeneratorBuilder().build();
+    XlsxReportGenerator xlsxReportGenerator = XlsxReportGenerator.builder().build();
 
     Map<String, List<String[]>> inputSheetsContent = new LinkedHashMap<>();
 

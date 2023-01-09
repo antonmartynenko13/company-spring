@@ -1,10 +1,10 @@
 package com.martynenko.anton.company.projectposition;
 
-import com.martynenko.anton.company.openapi.CrudCreateWithRelations;
-import com.martynenko.anton.company.openapi.CrudDelete;
-import com.martynenko.anton.company.openapi.CrudGetAll;
-import com.martynenko.anton.company.openapi.CrudGetOne;
-import com.martynenko.anton.company.openapi.CrudUpdateWithRelations;
+import com.martynenko.anton.company.openapi.CreateWithRelations;
+import com.martynenko.anton.company.openapi.Delete;
+import com.martynenko.anton.company.openapi.GetAll;
+import com.martynenko.anton.company.openapi.GetById;
+import com.martynenko.anton.company.openapi.UpdateWithRelations;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.net.URI;
 import java.util.Collection;
@@ -37,8 +37,8 @@ public class ProjectPositionController {
     this.projectPositionService = projectPositionService;
   }
 
-  @CrudCreateWithRelations
-  @PostMapping("")
+  @CreateWithRelations
+  @PostMapping
   public ResponseEntity<ProjectPositionDTO> create(
       @RequestBody @Valid ProjectPositionDTO created,
       final HttpServletRequest request) {
@@ -46,21 +46,21 @@ public class ProjectPositionController {
     return ResponseEntity.created(URI.create(request.getRequestURI() + created.id())).build();
   }
 
-  @CrudUpdateWithRelations
+  @UpdateWithRelations
   @PutMapping("/{id}")
   public ResponseEntity<ProjectPositionDTO> update(@PathVariable final Long id,
       @RequestBody @Valid final ProjectPositionDTO updated) {
     return ResponseEntity.ok(projectPositionService.update(id, updated).toDTO());
   }
 
-  @CrudGetOne
+  @GetById
   @GetMapping("/{id}")
-  public ResponseEntity<ProjectPositionDTO> getOne(@PathVariable final Long id) {
+  public ResponseEntity<ProjectPositionDTO> getById(@PathVariable final Long id) {
     return ResponseEntity.ok(projectPositionService.get(id).toDTO());
   }
 
-  @CrudGetAll
-  @GetMapping("")
+  @GetAll
+  @GetMapping
   public ResponseEntity<Collection<ProjectPositionDTO>> getAll() {
     List<ProjectPositionDTO> projectPositionDTOList
         = projectPositionService.listAll().stream().map(ProjectPosition::toDTO).toList();
@@ -68,7 +68,7 @@ public class ProjectPositionController {
     return ResponseEntity.ok(projectPositionDTOList);
   }
 
-  @CrudDelete
+  @Delete
   @DeleteMapping("/{id}")
   public ResponseEntity<?> delete(@PathVariable final Long id) {
     projectPositionService.delete(id);

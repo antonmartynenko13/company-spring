@@ -1,6 +1,7 @@
 package com.martynenko.anton.company.openapi;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.headers.Header;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -15,16 +16,16 @@ import org.springframework.http.MediaType;
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 
-@Operation(summary = "Update by id")
+@Operation(summary = "Create new")
 @RequestBody(content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
 @ApiResponses(value = {
-    @ApiResponse(responseCode = HttpURLConnection.HTTP_OK + ""),
-    @ApiResponse(responseCode = HttpURLConnection.HTTP_NOT_FOUND + "",
-        content = @Content(mediaType = MediaType.APPLICATION_PROBLEM_JSON_VALUE)),
+    @ApiResponse(responseCode = HttpURLConnection.HTTP_CREATED + "",
+        content = @Content,
+        headers = @Header(name = "Location", description = "Location of created", required = true)),
     @ApiResponse(responseCode = HttpURLConnection.HTTP_CONFLICT + "",
         description = "Duplicate a unique field",
         content = @Content(mediaType = MediaType.APPLICATION_PROBLEM_JSON_VALUE))
 })
-public @interface CrudUpdate {
+public @interface Create {
 
 }

@@ -10,6 +10,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.Arrays;
 import java.util.Map;
 
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -92,13 +93,13 @@ class DepartmentControllerTest {
   @Test
   @Transactional(propagation = Propagation.NEVER)
   void onUpdateWithDuplicationShouldReturnConflict() throws Exception {
-    long id = departmentRepository.save(new DepartmentDTO(null,"Department1").createInstance()).getId();
-    departmentRepository.save(new DepartmentDTO(null,"Department2").createInstance());
+    long id1 = departmentRepository.save(new DepartmentDTO(null,"Department1").createInstance()).getId();
+    long id2 = departmentRepository.save(new DepartmentDTO(null,"Department2").createInstance()).getId();
 
     //duplication of unique title
     Map<String, String> payloadMap = Map.of("title", "Department2");
 
-    this.mockMvc.perform(put(contextPath + id)
+    this.mockMvc.perform(put(contextPath + id1)
             .contentType(MediaType.APPLICATION_JSON)
             .content(this.mapper.writeValueAsString(payloadMap)))
         .andDo(print())
@@ -106,7 +107,8 @@ class DepartmentControllerTest {
         .andExpect(content().contentType(MediaType.APPLICATION_PROBLEM_JSON_VALUE));
 
     //clean up after yourself
-    departmentRepository.deleteAll();
+    departmentRepository.deleteAllById(Arrays.asList(id1, id2));
+    //departmentRepository.deleteAll();
   }
 
   @Test

@@ -1,26 +1,23 @@
-package com.martynenko.anton.company.project;
+package com.martynenko.anton.company.department;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import com.martynenko.anton.company.department.DbDepartmentService;
-import com.martynenko.anton.company.department.Department;
-import com.martynenko.anton.company.department.DepartmentDTO;
-import com.martynenko.anton.company.department.DepartmentRepository;
 import java.util.List;
 import java.util.Optional;
 import javax.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.Test;
 
-class DbProjectServiceTest {
-  private ProjectRepository repository = mock(ProjectRepository.class);
+class DepartmentServiceImplTest {
 
-  private DbProjectService service = new DbProjectService(repository);
+  private DepartmentRepository repository = mock(DepartmentRepository.class);
 
-  private ProjectDTO dto = mock(ProjectDTO.class);
-  private Project entity = mock(Project.class);
+  private DepartmentServiceImpl service = new DepartmentServiceImpl(repository);
+
+  private DepartmentDTO dto = mock(DepartmentDTO.class);
+  private Department entity = mock(Department.class);
 
   long id = 1;
   long missingId = -1;

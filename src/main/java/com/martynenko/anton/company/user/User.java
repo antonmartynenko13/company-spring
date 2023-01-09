@@ -61,11 +61,6 @@ public class User {
   @NotNull
   private Department department;
 
-  @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-  @ToString.Exclude
-  @EqualsAndHashCode.Exclude
-  private ProjectPosition projectPosition;
-
   public User(final UserDTO userDTO, final Department department) {
     this.firstName = userDTO.firstName();
     this.lastName = userDTO.lastName();

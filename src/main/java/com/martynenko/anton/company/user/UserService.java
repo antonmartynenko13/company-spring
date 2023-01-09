@@ -1,5 +1,6 @@
 package com.martynenko.anton.company.user;
 
+import com.martynenko.anton.company.utils.DateInterval;
 import java.util.Collection;
 import javax.validation.Valid;
 
@@ -17,6 +18,8 @@ public interface UserService {
 
   void delete(Long id);
 
-  Collection<User> listAvailable(long period);
+  Collection<AvailableUserView> listAvailableUserViews();
+  Collection<AvailableUserView> listAvailableUserViews(DateInterval targetPeriod);
+  Collection<AvailableUserView> listAvailableUserViews(long period);
 
 }

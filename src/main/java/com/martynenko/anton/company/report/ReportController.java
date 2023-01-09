@@ -26,7 +26,7 @@ public class ReportController {
   }
 
   @GetLastReport
-  @GetMapping(value = "/last", produces = XLSX_CONTENT_TYPE)
+  @GetMapping("/last")
   public ResponseEntity<?> getLast(@RequestParam final ReportType reportType) {
     Report report = reportService.getLast(reportType);
     return ResponseEntity.ok()
@@ -35,5 +35,11 @@ public class ReportController {
                       reportType, report.getCreationDate().getMonth()))
         .header(HttpHeaders.CONTENT_TYPE, XLSX_CONTENT_TYPE)
         .body(report.getBinaryData());
+  }
+
+  @GetMapping("/generate")
+  public ResponseEntity<?> generate() {
+    reportService.generateReports();
+    return ResponseEntity.ok().build();
   }
 }

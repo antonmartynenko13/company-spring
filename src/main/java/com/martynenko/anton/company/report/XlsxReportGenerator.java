@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.util.List;
 import java.util.Map;
+import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
@@ -17,79 +18,21 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-@Slf4j
-@RequiredArgsConstructor
+@Builder
 @ToString
+@Slf4j
 public class XlsxReportGenerator implements ReportGenerator {
-  private final String headerFontName;
+  @Builder.Default private final String headerFontName = "Arial";
 
-  private final short headerFontHeight;
+  @Builder.Default private final short headerFontHeight = 14;
 
-  private final boolean headerFontIsBold;
+  @Builder.Default private final boolean headerFontIsBold = false;
 
-  private final String contentFontName;
+  @Builder.Default private final String contentFontName = "Arial";
 
-  private final short contentFontHeight;
+  @Builder.Default private final short contentFontHeight = 12;
 
-  private final boolean contentFontIsBold;
-
-  public static class ReportGeneratorBuilder {
-    //default values
-    private String headerFontName = "Arial";
-
-    private short headerFontHeight = 14;
-
-    private boolean headerFontIsBold = false;
-
-    private String contentFontName = "Arial";
-
-    private short contentFontHeight = 12;
-
-    private boolean contentFontIsBold = false;
-
-    public ReportGeneratorBuilder headerFontName(final String fontName) {
-      this.headerFontName = fontName;
-      return this;
-    }
-
-    public ReportGeneratorBuilder headerFontHeight(final short headerFontHeight) {
-      this.headerFontHeight = headerFontHeight;
-      return this;
-    }
-
-    public ReportGeneratorBuilder headerFontIsBold(final boolean headerFontIsBold) {
-      this.headerFontIsBold = headerFontIsBold;
-      return this;
-    }
-
-    public ReportGeneratorBuilder contentFont(final String fontName) {
-      this.contentFontName = fontName;
-      return this;
-    }
-
-    public ReportGeneratorBuilder contentFontHeight(final short contentFontHeight) {
-      this.contentFontHeight = contentFontHeight;
-      return this;
-    }
-
-    public ReportGeneratorBuilder contentFontIsBold(final boolean contentFontIsBold) {
-      this.contentFontIsBold = contentFontIsBold;
-      return this;
-    }
-
-    XlsxReportGenerator build() {
-      XlsxReportGenerator xlsxReportGenerator =  new XlsxReportGenerator(
-          this.headerFontName,
-          this.headerFontHeight,
-          this.headerFontIsBold,
-          this.contentFontName,
-          this.contentFontHeight,
-          this.contentFontIsBold
-          );
-      log.debug("Created new XlsxReportGenerator: {}", xlsxReportGenerator);
-      return xlsxReportGenerator;
-    }
-  }
+  @Builder.Default private final boolean contentFontIsBold = false;
 
   /**
    * The content submitted for report generation organized in Map
@@ -158,10 +101,10 @@ public class XlsxReportGenerator implements ReportGenerator {
     font.setFontName(isHeader ? this.headerFontName : this.contentFontName);
     font.setFontHeightInPoints(isHeader ? this.headerFontHeight : this.contentFontHeight);
     font.setBold(isHeader ? this.headerFontIsBold : this.contentFontIsBold);
+
     CellStyle cellStyle = workbook.createCellStyle();
     cellStyle.setFont(font);
     cellStyle.setAlignment(HorizontalAlignment.CENTER);
     return cellStyle;
   }
-
 }

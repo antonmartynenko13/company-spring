@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 @Primary
-public class DbProjectService implements ProjectService {
+public class ProjectServiceImpl implements ProjectService {
 
   private final ProjectRepository projectRepository;
 
   @Autowired
-  public DbProjectService(final ProjectRepository projectRepository) {
+  public ProjectServiceImpl(final ProjectRepository projectRepository) {
     this.projectRepository = projectRepository;
   }
 
